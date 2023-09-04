@@ -25,7 +25,12 @@
   "keywords": [
     "capacitor",
     "plugin",
-    "native"
+    "native",
+    "battery",
+    "web",
+    "android",
+    "ios",
+    "ionic"
   ],
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
@@ -60,7 +65,7 @@
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1",
     "swiftlint": "^1.0.2",
-    "typescript": "^5.2.2"
+    "typescript": "~5.2.2"
   },
   "peerDependencies": {
     "@capacitor/core": "^5.0.0"
