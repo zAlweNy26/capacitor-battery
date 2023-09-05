@@ -1,6 +1,6 @@
-# @danyalwe/capacitor-battery
+# Capacitor Plugin - Battery
 
-Capacitor plugin to get access to every info about the device battery
+Get access to every info about the device battery!
 
 ## Install
 
