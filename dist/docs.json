@@ -1,0 +1,319 @@
+{
+  "api": {
+    "name": "BatteryPlugin",
+    "slug": "batteryplugin",
+    "docs": "",
+    "tags": [],
+    "methods": [
+      {
+        "name": "start",
+        "signature": "() => Promise<Battery | undefined>",
+        "parameters": [],
+        "returns": "Promise<Battery | undefined>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "Battery"
+        ],
+        "slug": "start"
+      },
+      {
+        "name": "stop",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "stop"
+      },
+      {
+        "name": "addListener",
+        "signature": "(eventName: 'batteryChange', listenerFunc: (event: Battery) => void) => Promise<PluginListenerHandle>",
+        "parameters": [
+          {
+            "name": "eventName",
+            "docs": "",
+            "type": "'batteryChange'"
+          },
+          {
+            "name": "listenerFunc",
+            "docs": "",
+            "type": "(event: Battery) => void"
+          }
+        ],
+        "returns": "Promise<PluginListenerHandle>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [
+          "PluginListenerHandle",
+          "Battery"
+        ],
+        "slug": "addlistenerbatterychange"
+      },
+      {
+        "name": "removeAllListeners",
+        "signature": "() => Promise<void>",
+        "parameters": [],
+        "returns": "Promise<void>",
+        "tags": [],
+        "docs": "",
+        "complexTypes": [],
+        "slug": "removealllisteners"
+      }
+    ],
+    "properties": []
+  },
+  "interfaces": [
+    {
+      "name": "Battery",
+      "slug": "battery",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "level",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number"
+        },
+        {
+          "name": "hasBattery",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "isCharging",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "boolean"
+        },
+        {
+          "name": "chargingTime",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "dischargingTime",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "currentCapacity",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "totalCapacity",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "realPercentage",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "technology",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "string | undefined"
+        },
+        {
+          "name": "temperature",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "voltage",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "amperage",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "wattage",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "number | undefined"
+        },
+        {
+          "name": "health",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "BatteryHealth"
+          ],
+          "type": "BatteryHealth"
+        },
+        {
+          "name": "status",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "BatteryStatus"
+          ],
+          "type": "BatteryStatus"
+        },
+        {
+          "name": "chargeMode",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [
+            "BatteryChargeMode"
+          ],
+          "type": "BatteryChargeMode"
+        }
+      ]
+    },
+    {
+      "name": "PluginListenerHandle",
+      "slug": "pluginlistenerhandle",
+      "docs": "",
+      "tags": [],
+      "methods": [],
+      "properties": [
+        {
+          "name": "remove",
+          "tags": [],
+          "docs": "",
+          "complexTypes": [],
+          "type": "() => Promise<void>"
+        }
+      ]
+    }
+  ],
+  "enums": [
+    {
+      "name": "BatteryHealth",
+      "slug": "batteryhealth",
+      "members": [
+        {
+          "name": "UNKNOWN",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "COLD",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "DEAD",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "GOOD",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "OVERHEAT",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "OVER_VOLTAGE",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "FAILURE",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    },
+    {
+      "name": "BatteryStatus",
+      "slug": "batterystatus",
+      "members": [
+        {
+          "name": "UNKNOWN",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "NOT_CHARGING",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "DISCHARGING",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "CHARGING",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "FULL",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    },
+    {
+      "name": "BatteryChargeMode",
+      "slug": "batterychargemode",
+      "members": [
+        {
+          "name": "UNKNOWN",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "AC",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "USB",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "DOCK",
+          "tags": [],
+          "docs": ""
+        },
+        {
+          "name": "WIRELESS",
+          "tags": [],
+          "docs": ""
+        }
+      ]
+    }
+  ],
+  "typeAliases": [],
+  "pluginConfigs": []
+}

@@ -1,6 +1,7 @@
 import { WebPlugin } from '@capacitor/core';
 
-import type { BatteryPlugin, Battery } from './definitions';
+import { Battery } from './definitions';
+import type { BatteryPlugin } from './definitions';
 
 export class BatteryWeb extends WebPlugin implements BatteryPlugin {
   private battery!: BatteryManager;

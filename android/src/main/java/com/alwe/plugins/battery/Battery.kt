@@ -68,9 +68,9 @@ class Battery(
         content.put("voltage", voltage)
         content.put("amperage", amperage)
         content.put("wattage", wattage)
-        content.put("health", BatteryHealth.fromInt(health))
-        content.put("status", BatteryStatus.fromInt(status))
-        content.put("chargeMode", BatteryChargeMode.fromInt(chargeMode))
+        content.put("health", BatteryHealth.fromInt(health)?.ordinal ?: 0)
+        content.put("status", BatteryStatus.fromInt(status)?.ordinal ?: 0)
+        content.put("chargeMode", BatteryChargeMode.fromInt(chargeMode)?.ordinal ?: 0)
 
         this.notify("batteryChange", content, true)
 

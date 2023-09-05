@@ -35,12 +35,12 @@
   "scripts": {
     "verify": "npm run verify:ios && npm run verify:android && npm run verify:web",
     "verify:ios": "cd ios && pod install && xcodebuild -workspace Plugin.xcworkspace -scheme Plugin -destination generic/platform=iOS && cd ..",
-    "verify:android": "cd android && ./gradlew clean build test && cd ..",
+    "verify:android": "cd android && gradlew clean build test && cd ..",
     "verify:web": "npm run build",
     "lint": "npm run eslint && npm run prettier -- --check && npm run swiftlint -- lint",
     "fmt": "npm run eslint -- --fix && npm run prettier -- --write && npm run swiftlint -- --fix --format",
     "eslint": "eslint . --ext ts",
-    "prettier": "prettier \"**/*.{css,html,ts,js,java}\"",
+    "prettier": "prettier \"**/*.{css,html,ts,js}\"",
     "swiftlint": "node-swiftlint",
     "docgen": "docgen --api BatteryPlugin --output-readme README.md --output-json dist/docs.json",
     "build": "npm run clean && tsc && rollup -c rollup.config.js --bundleConfigAsCjs",
@@ -57,15 +57,15 @@
     "@ionic/eslint-config": "^0.3.0",
     "@ionic/prettier-config": "^4.0.0",
     "@ionic/swiftlint-config": "^1.1.2",
-    "@typescript-eslint/eslint-plugin": "^6.6.0",
-    "eslint": "^8.48.0",
+    "@typescript-eslint/eslint-plugin": "^5.62.0",
+    "eslint": "^7.32.0",
     "prettier": "~3.0.3",
     "prettier-plugin-java": "~2.3.1",
     "prettier-plugin-kotlin": "^2.1.0",
     "rimraf": "^5.0.1",
     "rollup": "^3.28.1",
     "swiftlint": "^1.0.2",
-    "typescript": "~5.2.2"
+    "typescript": "^5.1.6"
   },
   "peerDependencies": {
     "@capacitor/core": "^5.0.0"

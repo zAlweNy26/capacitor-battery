@@ -7,16 +7,21 @@ import com.getcapacitor.annotation.CapacitorPlugin
 
 @CapacitorPlugin(name = "Battery")
 class BatteryPlugin : Plugin() {
-    private val implementation = Battery(::notifyListeners, context)
+    private var implementation: Battery? = null
+
+    override fun load() {
+        super.load()
+        implementation = Battery(::notifyListeners, context)
+    }
 
     @PluginMethod
     fun start(call: PluginCall) {
-        val res = implementation.start()
+        val res = implementation?.start()
         call.resolve(res)
     }
 
     @PluginMethod
     fun stop(call: PluginCall) {
-        implementation.stop()
+        implementation?.stop()
     }
 }
