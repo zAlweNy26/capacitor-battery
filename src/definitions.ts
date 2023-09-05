@@ -1,4 +1,4 @@
-import type { PluginListenerHandle } from "@capacitor/core";
+import type { PluginListenerHandle } from '@capacitor/core';
 
 export enum BatteryChargeMode {
   UNKNOWN,
@@ -27,30 +27,27 @@ export enum BatteryStatus {
 }
 
 export interface Battery {
-  level: number
-  hasBattery: boolean
-  isCharging: boolean
-  chargingTime?: number
-  dischargingTime?: number
-  currentCapacity?: number
-  totalCapacity?: number
-  realPercentage?: number
-  technology?: string
-  temperature?: number
-  voltage?: number
-  amperage?: number
-  wattage?: number
-  health?: BatteryHealth
-  status?: BatteryStatus
-  chargeMode?: BatteryChargeMode
+  level: number;
+  hasBattery: boolean;
+  isCharging: boolean;
+  chargingTime?: number;
+  dischargingTime?: number;
+  currentCapacity?: number;
+  totalCapacity?: number;
+  realPercentage?: number;
+  technology?: string;
+  temperature?: number;
+  voltage?: number;
+  amperage?: number;
+  wattage?: number;
+  health?: BatteryHealth;
+  status?: BatteryStatus;
+  chargeMode?: BatteryChargeMode;
 }
 
 export interface BatteryPlugin {
   start(): Promise<Battery | undefined>;
   stop(): Promise<void>;
-  addListener(
-    eventName: 'batteryChange',
-    listenerFunc: (event: Battery) => void,
-  ): Promise<PluginListenerHandle>;
+  addListener(eventName: 'batteryChange', listenerFunc: (event: Battery) => void): Promise<PluginListenerHandle>;
   removeAllListeners(): Promise<void>;
 }

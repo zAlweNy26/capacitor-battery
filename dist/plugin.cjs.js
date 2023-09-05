@@ -30,7 +30,7 @@ exports.BatteryStatus = void 0;
 })(exports.BatteryStatus || (exports.BatteryStatus = {}));
 
 const Battery = core.registerPlugin('Battery', {
-    web: () => Promise.resolve().then(function () { return web; }).then(m => new m.BatteryWeb()),
+    web: () => Promise.resolve().then(function () { return web; }).then((m) => new m.BatteryWeb()),
 });
 
 class BatteryWeb extends core.WebPlugin {
@@ -39,7 +39,7 @@ class BatteryWeb extends core.WebPlugin {
         this.controller = new AbortController();
     }
     async start() {
-        if (typeof navigator === 'undefined' || !("getBattery" in navigator)) {
+        if (typeof navigator === 'undefined' || !('getBattery' in navigator)) {
             this.unavailable('Battery Status API is not available in this browser.');
         }
         else {
@@ -47,10 +47,18 @@ class BatteryWeb extends core.WebPlugin {
             if (!this.battery) {
                 this.unavailable('Unable to get the battery status in this browser.');
             }
-            this.battery.addEventListener('chargingchange', () => this.notifyBatteryChange(), { signal: this.controller.signal });
-            this.battery.addEventListener('chargingtimechange', () => this.notifyBatteryChange(), { signal: this.controller.signal });
-            this.battery.addEventListener('dischargingtimechange', () => this.notifyBatteryChange(), { signal: this.controller.signal });
-            this.battery.addEventListener('levelchange', () => this.notifyBatteryChange(), { signal: this.controller.signal });
+            this.battery.addEventListener('chargingchange', () => this.notifyBatteryChange(), {
+                signal: this.controller.signal,
+            });
+            this.battery.addEventListener('chargingtimechange', () => this.notifyBatteryChange(), {
+                signal: this.controller.signal,
+            });
+            this.battery.addEventListener('dischargingtimechange', () => this.notifyBatteryChange(), {
+                signal: this.controller.signal,
+            });
+            this.battery.addEventListener('levelchange', () => this.notifyBatteryChange(), {
+                signal: this.controller.signal,
+            });
             return this.notifyBatteryChange();
         }
     }
@@ -60,7 +68,7 @@ class BatteryWeb extends core.WebPlugin {
             isCharging: this.battery.charging,
             chargingTime: this.battery.chargingTime,
             dischargingTime: this.battery.dischargingTime,
-            level: this.battery.level
+            level: this.battery.level,
         };
         this.notifyListeners('batteryChange', result);
         return result;

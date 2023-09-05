@@ -1,4 +1,4 @@
-import type { PluginListenerHandle } from "@capacitor/core";
+import type { PluginListenerHandle } from '@capacitor/core';
 export declare enum BatteryChargeMode {
     UNKNOWN = 0,
     AC = 1,
