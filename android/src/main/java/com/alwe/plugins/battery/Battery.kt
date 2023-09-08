@@ -22,13 +22,13 @@ class Battery(
     fun start(): JSObject {
         context.registerReceiver(this, intentFilter)
         totalCapacity = getBatteryCapacity(context)
-        Log.d("Start", "Connection Plugin")
+        Log.d("Start", "Alwe's Battery Plugin")
         return getValues(context, Intent.parseUri(Intent.ACTION_BATTERY_CHANGED, 0))
     }
 
     fun stop() {
         context.unregisterReceiver(this)
-        Log.d("Stop", "Connection Plugin")
+        Log.d("Stop", "Alwe's Battery Plugin")
     }
 
     override fun onReceive(context: Context?, intent: Intent?) {
