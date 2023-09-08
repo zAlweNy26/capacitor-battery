@@ -2,4 +2,4 @@
 '@danyalwe/capacitor-battery': patch
 ---
 
-Fixed logs
+Changed minimum supported Android SDK version
