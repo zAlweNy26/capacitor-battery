@@ -2,6 +2,9 @@
 
 var core = require('@capacitor/core');
 
+/**
+ * Enum representing the different modes of charging for a battery.
+ */
 exports.BatteryChargeMode = void 0;
 (function (BatteryChargeMode) {
     BatteryChargeMode[BatteryChargeMode["UNKNOWN"] = 0] = "UNKNOWN";
@@ -10,6 +13,9 @@ exports.BatteryChargeMode = void 0;
     BatteryChargeMode[BatteryChargeMode["DOCK"] = 3] = "DOCK";
     BatteryChargeMode[BatteryChargeMode["WIRELESS"] = 4] = "WIRELESS";
 })(exports.BatteryChargeMode || (exports.BatteryChargeMode = {}));
+/**
+ * Enum representing the health status of a device's battery.
+ */
 exports.BatteryHealth = void 0;
 (function (BatteryHealth) {
     BatteryHealth[BatteryHealth["UNKNOWN"] = 0] = "UNKNOWN";
@@ -20,6 +26,9 @@ exports.BatteryHealth = void 0;
     BatteryHealth[BatteryHealth["OVER_VOLTAGE"] = 5] = "OVER_VOLTAGE";
     BatteryHealth[BatteryHealth["FAILURE"] = 6] = "FAILURE";
 })(exports.BatteryHealth || (exports.BatteryHealth = {}));
+/**
+ * Enum representing the possible battery statuses.
+ */
 exports.BatteryStatus = void 0;
 (function (BatteryStatus) {
     BatteryStatus[BatteryStatus["UNKNOWN"] = 0] = "UNKNOWN";

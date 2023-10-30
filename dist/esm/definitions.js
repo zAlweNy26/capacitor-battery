@@ -1,3 +1,6 @@
+/**
+ * Enum representing the different modes of charging for a battery.
+ */
 export var BatteryChargeMode;
 (function (BatteryChargeMode) {
     BatteryChargeMode[BatteryChargeMode["UNKNOWN"] = 0] = "UNKNOWN";
@@ -6,6 +9,9 @@ export var BatteryChargeMode;
     BatteryChargeMode[BatteryChargeMode["DOCK"] = 3] = "DOCK";
     BatteryChargeMode[BatteryChargeMode["WIRELESS"] = 4] = "WIRELESS";
 })(BatteryChargeMode || (BatteryChargeMode = {}));
+/**
+ * Enum representing the health status of a device's battery.
+ */
 export var BatteryHealth;
 (function (BatteryHealth) {
     BatteryHealth[BatteryHealth["UNKNOWN"] = 0] = "UNKNOWN";
@@ -16,6 +22,9 @@ export var BatteryHealth;
     BatteryHealth[BatteryHealth["OVER_VOLTAGE"] = 5] = "OVER_VOLTAGE";
     BatteryHealth[BatteryHealth["FAILURE"] = 6] = "FAILURE";
 })(BatteryHealth || (BatteryHealth = {}));
+/**
+ * Enum representing the possible battery statuses.
+ */
 export var BatteryStatus;
 (function (BatteryStatus) {
     BatteryStatus[BatteryStatus["UNKNOWN"] = 0] = "UNKNOWN";
