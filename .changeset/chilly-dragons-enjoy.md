@@ -3,3 +3,4 @@
 ---
 
 Improved documentation
+Update Capacitor to v6
