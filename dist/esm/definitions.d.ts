@@ -1,40 +1,53 @@
 import type { PluginListenerHandle } from '@capacitor/core';
-/**
- * Enum representing the different modes of charging for a battery.
- */
+/** Represents the charging mode of a battery. */
 export declare enum BatteryChargeMode {
+    /** The charging mode is unknown. */
     UNKNOWN = 0,
+    /** The battery is being charged through an AC power source. */
     AC = 1,
+    /** The battery is being charged through a USB connection. */
     USB = 2,
+    /** The battery is being charged through a docking station. */
     DOCK = 3,
+    /** The battery is being charged wirelessly. */
     WIRELESS = 4
 }
 /**
- * Enum representing the health status of a device's battery.
+ * Represents the health status of a battery.
  */
 export declare enum BatteryHealth {
+    /** The health status is unknown. */
     UNKNOWN = 0,
+    /** The battery is cold. */
     COLD = 1,
+    /** The battery is dead. */
     DEAD = 2,
+    /** The battery is in good health. */
     GOOD = 3,
+    /** The battery is overheating. */
     OVERHEAT = 4,
+    /** The battery is experiencing over voltage. */
     OVER_VOLTAGE = 5,
+    /** The battery has failed. */
     FAILURE = 6
 }
 /**
- * Enum representing the possible battery statuses.
+ * Represents the battery status.
  */
 export declare enum BatteryStatus {
+    /** The battery status is unknown. */
     UNKNOWN = 0,
+    /** The battery is not charging. */
     NOT_CHARGING = 1,
+    /** The battery is discharging. */
     DISCHARGING = 2,
+    /** The battery is charging. */
     CHARGING = 3,
+    /** The battery is full. */
     FULL = 4
 }
-/**
- * Represents the battery information of the device.
- */
-export interface Battery {
+/** Represents the battery information of the device. */
+export interface BatteryInfos {
     /** The current battery level as a percentage (0-100). */
     level: number;
     /** Whether the device has a battery or not. */
@@ -68,30 +81,28 @@ export interface Battery {
     /** The charging mode of the battery. Only available on some devices. */
     chargeMode?: BatteryChargeMode;
 }
-/**
- * The Battery plugin interface.
- */
+/** Represents the BatteryPlugin interface. */
 export interface BatteryPlugin {
     /**
-     * Starts monitoring the battery level.
-     * @returns A promise that resolves with the current battery level, or undefined if the level cannot be determined.
+     * Starts the battery plugin and returns the battery information.
+     * @returns A promise that resolves to the battery information or undefined.
      */
-    start(): Promise<Battery | undefined>;
+    start(): Promise<BatteryInfos | undefined>;
     /**
-     * Stops monitoring the battery level.
-     * @returns A promise that resolves when monitoring has stopped.
+     * Stops the battery plugin.
+     * @returns A promise that resolves when the plugin is stopped.
      */
     stop(): Promise<void>;
     /**
-     * Adds a listener for battery change events.
-     * @param eventName The name of the event to listen for.
-     * @param listenerFunc The function to call when the event is triggered.
-     * @returns A promise that resolves with a handle to the listener.
+     * Adds a listener for the 'batteryChange' event.
+     * @param eventName The name of the event.
+     * @param listenerFunc The listener function to be called when the event is triggered.
+     * @returns A promise that resolves to a PluginListenerHandle.
      */
-    addListener(eventName: 'batteryChange', listenerFunc: (event: Battery) => void): Promise<PluginListenerHandle>;
+    addListener(eventName: 'batteryChange', listenerFunc: (event: BatteryInfos) => void): Promise<PluginListenerHandle>;
     /**
-     * Removes all listeners for battery change events.
-     * @returns A promise that resolves when all listeners have been removed.
+     * Removes all listeners for the 'batteryChange' event.
+     * @returns A promise that resolves when all listeners are removed.
      */
     removeAllListeners(): Promise<void>;
 }
