@@ -63,13 +63,17 @@ npx cap sync
 <docgen-api>
 <!--Update the source file JSDoc comments and rerun docgen to update the docs below-->
 
+Represents the BatteryPlugin interface.
+
 ### start()
 
 ```typescript
-start() => Promise<Battery | undefined>
+start() => Promise<BatteryInfos | undefined>
 ```
 
-**Returns:** <code>Promise&lt;<a href="#battery">Battery</a>&gt;</code>
+Starts the battery plugin and returns the battery information.
+
+**Returns:** <code>Promise&lt;<a href="#batteryinfos">BatteryInfos</a>&gt;</code>
 
 --------------------
 
@@ -80,19 +84,23 @@ start() => Promise<Battery | undefined>
 stop() => Promise<void>
 ```
 
+Stops the battery plugin.
+
 --------------------
 
 
 ### addListener('batteryChange', ...)
 
 ```typescript
-addListener(eventName: 'batteryChange', listenerFunc: (event: Battery) => void) => Promise<PluginListenerHandle>
+addListener(eventName: 'batteryChange', listenerFunc: (event: BatteryInfos) => void) => Promise<PluginListenerHandle>
 ```
 
-| Param              | Type                                                            |
-| ------------------ | --------------------------------------------------------------- |
-| **`eventName`**    | <code>'batteryChange'</code>                                    |
-| **`listenerFunc`** | <code>(event: <a href="#battery">Battery</a>) =&gt; void</code> |
+Adds a listener for the 'batteryChange' event.
+
+| Param              | Type                                                                      | Description                                                     |
+| ------------------ | ------------------------------------------------------------------------- | --------------------------------------------------------------- |
+| **`eventName`**    | <code>'batteryChange'</code>                                              | The name of the event.                                          |
+| **`listenerFunc`** | <code>(event: <a href="#batteryinfos">BatteryInfos</a>) =&gt; void</code> | The listener function to be called when the event is triggered. |
 
 **Returns:** <code>Promise&lt;<a href="#pluginlistenerhandle">PluginListenerHandle</a>&gt;</code>
 
@@ -105,32 +113,36 @@ addListener(eventName: 'batteryChange', listenerFunc: (event: Battery) => void) 
 removeAllListeners() => Promise<void>
 ```
 
+Removes all listeners for the 'batteryChange' event.
+
 --------------------
 
 
 ### Interfaces
 
 
-#### Battery
+#### BatteryInfos
 
-| Prop                  | Type                                                            |
-| --------------------- | --------------------------------------------------------------- |
-| **`level`**           | <code>number</code>                                             |
-| **`hasBattery`**      | <code>boolean</code>                                            |
-| **`isCharging`**      | <code>boolean</code>                                            |
-| **`chargingTime`**    | <code>number</code>                                             |
-| **`dischargingTime`** | <code>number</code>                                             |
-| **`currentCapacity`** | <code>number</code>                                             |
-| **`totalCapacity`**   | <code>number</code>                                             |
-| **`realPercentage`**  | <code>number</code>                                             |
-| **`technology`**      | <code>string</code>                                             |
-| **`temperature`**     | <code>number</code>                                             |
-| **`voltage`**         | <code>number</code>                                             |
-| **`amperage`**        | <code>number</code>                                             |
-| **`wattage`**         | <code>number</code>                                             |
-| **`health`**          | <code><a href="#batteryhealth">BatteryHealth</a></code>         |
-| **`status`**          | <code><a href="#batterystatus">BatteryStatus</a></code>         |
-| **`chargeMode`**      | <code><a href="#batterychargemode">BatteryChargeMode</a></code> |
+Represents the battery information of the device.
+
+| Prop                  | Type                                                            | Description                                                                                                       |
+| --------------------- | --------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------- |
+| **`level`**           | <code>number</code>                                             | The current battery level as a percentage (0-100).                                                                |
+| **`hasBattery`**      | <code>boolean</code>                                            | Whether the device has a battery or not.                                                                          |
+| **`isCharging`**      | <code>boolean</code>                                            | Whether the device is currently charging or not.                                                                  |
+| **`chargingTime`**    | <code>number</code>                                             | The estimated time remaining until the battery is fully charged (in minutes). Only available when charging.       |
+| **`dischargingTime`** | <code>number</code>                                             | The estimated time remaining until the battery is fully discharged (in minutes). Only available when discharging. |
+| **`currentCapacity`** | <code>number</code>                                             | The current battery capacity (in mAh). Only available on some devices.                                            |
+| **`totalCapacity`**   | <code>number</code>                                             | The total battery capacity (in mAh). Only available on some devices.                                              |
+| **`realPercentage`**  | <code>number</code>                                             | The real battery percentage, which may differ from the reported percentage. Only available on some devices.       |
+| **`technology`**      | <code>string</code>                                             | The technology used in the battery. Only available on some devices.                                               |
+| **`temperature`**     | <code>number</code>                                             | The current temperature of the battery (in Celsius). Only available on some devices.                              |
+| **`voltage`**         | <code>number</code>                                             | The current voltage of the battery (in volts). Only available on some devices.                                    |
+| **`amperage`**        | <code>number</code>                                             | The current amperage of the battery (in amperes). Only available on some devices.                                 |
+| **`wattage`**         | <code>number</code>                                             | The current wattage of the battery (in watts). Only available on some devices.                                    |
+| **`health`**          | <code><a href="#batteryhealth">BatteryHealth</a></code>         | The health status of the battery. Only available on some devices.                                                 |
+| **`status`**          | <code><a href="#batterystatus">BatteryStatus</a></code>         | The status of the battery. Only available on some devices.                                                        |
+| **`chargeMode`**      | <code><a href="#batterychargemode">BatteryChargeMode</a></code> | The charging mode of the battery. Only available on some devices.                                                 |
 
 
 #### PluginListenerHandle
@@ -145,36 +157,36 @@ removeAllListeners() => Promise<void>
 
 #### BatteryHealth
 
-| Members            |
-| ------------------ |
-| **`UNKNOWN`**      |
-| **`COLD`**         |
-| **`DEAD`**         |
-| **`GOOD`**         |
-| **`OVERHEAT`**     |
-| **`OVER_VOLTAGE`** |
-| **`FAILURE`**      |
+| Members            | Description                               |
+| ------------------ | ----------------------------------------- |
+| **`UNKNOWN`**      | The health status is unknown.             |
+| **`COLD`**         | The battery is cold.                      |
+| **`DEAD`**         | The battery is dead.                      |
+| **`GOOD`**         | The battery is in good health.            |
+| **`OVERHEAT`**     | The battery is overheating.               |
+| **`OVER_VOLTAGE`** | The battery is experiencing over voltage. |
+| **`FAILURE`**      | The battery has failed.                   |
 
 
 #### BatteryStatus
 
-| Members            |
-| ------------------ |
-| **`UNKNOWN`**      |
-| **`NOT_CHARGING`** |
-| **`DISCHARGING`**  |
-| **`CHARGING`**     |
-| **`FULL`**         |
+| Members            | Description                    |
+| ------------------ | ------------------------------ |
+| **`UNKNOWN`**      | The battery status is unknown. |
+| **`NOT_CHARGING`** | The battery is not charging.   |
+| **`DISCHARGING`**  | The battery is discharging.    |
+| **`CHARGING`**     | The battery is charging.       |
+| **`FULL`**         | The battery is full.           |
 
 
 #### BatteryChargeMode
 
-| Members        |
-| -------------- |
-| **`UNKNOWN`**  |
-| **`AC`**       |
-| **`USB`**      |
-| **`DOCK`**     |
-| **`WIRELESS`** |
+| Members        | Description                                              |
+| -------------- | -------------------------------------------------------- |
+| **`UNKNOWN`**  | The charging mode is unknown.                            |
+| **`AC`**       | The battery is being charged through an AC power source. |
+| **`USB`**      | The battery is being charged through a USB connection.   |
+| **`DOCK`**     | The battery is being charged through a docking station.  |
+| **`WIRELESS`** | The battery is being charged wirelessly.                 |
 
 </docgen-api>
