@@ -1,20 +1,20 @@
 import { WebPlugin } from '@capacitor/core';
 
-import { Battery } from './definitions';
+import { BatteryInfos } from './definitions';
 import type { BatteryPlugin } from './definitions';
 
 export class BatteryWeb extends WebPlugin implements BatteryPlugin {
   private battery!: BatteryManager;
   private controller = new AbortController();
 
-  async start(): Promise<Battery | undefined> {
+  async start(): Promise<BatteryInfos | undefined> {
     if (typeof navigator === 'undefined' || !('getBattery' in navigator)) {
-      this.unavailable('Battery Status API is not available in this browser.');
+      throw this.unavailable('Battery Status API is not available in this browser.');
     } else {
       this.battery = await navigator.getBattery();
 
       if (!this.battery) {
-        this.unavailable('Unable to get the battery status in this browser.');
+        throw this.unavailable('Unable to get the battery status in this browser.');
       }
 
       this.battery.addEventListener('chargingchange', () => this.notifyBatteryChange(), {
@@ -39,12 +39,12 @@ export class BatteryWeb extends WebPlugin implements BatteryPlugin {
 
   private notifyBatteryChange() {
     const result = {
+      level: this.battery.level,
       hasBattery: true,
       isCharging: this.battery.charging,
       chargingTime: this.battery.chargingTime,
       dischargingTime: this.battery.dischargingTime,
-      level: this.battery.level,
-    } satisfies Battery;
+    } satisfies BatteryInfos;
     this.notifyListeners('batteryChange', result);
     return result;
   }
