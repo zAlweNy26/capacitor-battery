@@ -6,12 +6,12 @@ export class BatteryWeb extends WebPlugin {
     }
     async start() {
         if (typeof navigator === 'undefined' || !('getBattery' in navigator)) {
-            this.unavailable('Battery Status API is not available in this browser.');
+            throw this.unavailable('Battery Status API is not available in this browser.');
         }
         else {
             this.battery = await navigator.getBattery();
             if (!this.battery) {
-                this.unavailable('Unable to get the battery status in this browser.');
+                throw this.unavailable('Unable to get the battery status in this browser.');
             }
             this.battery.addEventListener('chargingchange', () => this.notifyBatteryChange(), {
                 signal: this.controller.signal,
@@ -30,11 +30,11 @@ export class BatteryWeb extends WebPlugin {
     }
     notifyBatteryChange() {
         const result = {
+            level: this.battery.level,
             hasBattery: true,
             isCharging: this.battery.charging,
             chargingTime: this.battery.chargingTime,
             dischargingTime: this.battery.dischargingTime,
-            level: this.battery.level,
         };
         this.notifyListeners('batteryChange', result);
         return result;
