@@ -1,5 +1,12 @@
 # @danyalwe/capacitor-battery
 
+## 0.0.3
+
+### Patch Changes
+
+- a9321fe: Improved documentation
+  Update Capacitor to v6
+
 ## 0.0.2
 
 ### Patch Changes
