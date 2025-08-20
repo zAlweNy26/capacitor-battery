@@ -1,5 +1,12 @@
 # @danyalwe/capacitor-battery
 
+## 0.0.4
+
+### Patch Changes
+
+- a873286: Update to Capacitor v7
+  Switch to pnpm
+
 ## 0.0.3
 
 ### Patch Changes
